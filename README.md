@@ -1,2 +1,2 @@
 # meta-mcp9808
-A yocto layer for the MCP9808's driver
+A yocto layer for the driver of the I2C sensor "MCP9808" 
