@@ -1,0 +1,22 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "brcm,bcm2708";
+
+        fragment@0 {
+                target-path = "<&i2c1>";
+                __overlay__ {
+
+                        mcp9808: mcp9808@18 {
+                                compatible = "microship, mcp9808";
+                                reg = <0x18>;
+                                status = "okay";
+                        };
+                };
+        };	
+        
+        __overrides__ {
+		mcp9808 = <&mcp9808>,"status";
+		};
+};				
