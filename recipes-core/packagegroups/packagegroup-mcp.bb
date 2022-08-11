@@ -5,4 +5,5 @@ SUMMARY = " MCP9808 packagegroup"
 inherit packagegroup
 
 RDEPENDS_${PN} = " mcp-driver \ 
-		mcp-overlay kernel-modules"
+		mcp-overlay kernel-modules \
+		mcpuser "

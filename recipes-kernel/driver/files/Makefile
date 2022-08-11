@@ -1,4 +1,5 @@
 obj-m := mcp9808.o
+#EXTRA_CFLAGS += -DDEBUG
 
 SRC := $(shell pwd)
 
