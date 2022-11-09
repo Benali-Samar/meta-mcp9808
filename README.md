@@ -1,6 +1,8 @@
 # meta-mcp9808
 A yocto layer for the driver of the I2C sensor "MCP9808" 
 
+You can find the table of contents in the "README" file up here.
+
 This yocto layer has a linux character driver for the temperature sensor "MCP9808" 
 with its userspace application and it is deployed on the raspberry Pi 3B+ board.
 
