@@ -5,37 +5,42 @@ Please see the corresponding sections below for details.
 Dependencies
 ============
 
-  URI: <first dependency>
-  branch: <branch name>
-
-  URI: <second dependency>
-  branch: <branch name>
-
-  .
-  .
-  .
-
-Patches
-=======
-
-Please submit any patches against the meta-mylayer layer to the xxxx mailing list (xxxx@zzzz.org)
-and cc: the maintainer:
-
-Maintainer: XXX YYYYYY <xxx.yyyyyy@zzzzz.com>
+  URI: <Meta-raspberry>
+  
 
 Table of Contents
 =================
 
-  I. Adding the meta-mylayer layer to your build
- II. Misc
+  I. Yocto layer "meta-mcp9808" containing four recipes. 
+    1. Recipes kernel
+    2. Recipes user
+    3. Recipes BSP
+    4. Recipes core
+    
+    
+ II. Recipes kernel:
+  The main recipe of the driver it has the character driver source code in C language with its Makefile that contain compilation scenarios.
+  The driver should contain all the entry/remove kernel routines, and as its a char driver it should also contain the open/close file routines
+  with all character drivers specifications like major and minor number allocation and creation of sysfs access ...
+  The driver also should be integrated in the device tree source so it has some instructions for device tree compatible and ID .
+  
+  III. Recipes user:
+    The driver will just send data to its file under "/dev", the user reciepe contain a simple C++ application source code that will open this file 
+    of the driver and display it on the terminal screen, also this reciepe contain the CMakelists that will compile this application.
+    
+  IV. Recipes BSP: 
+    The BSP recipe contain the Device tree overlay and the raspberry "bootconfig" append file.
+      - Device Tree Overlay:
+        This is like a way to add a node of a device to the Device tree source "DTS" that will be applied to the original DTS in the boot time,
+        so our I2C sensor node will be integrated under the I2C bus node.
+      - RPI append Bootfiles config :
+        This append file will enable the Device tree overlay to the config file of the raspberry pi.
+        
+   VII. Recipes core: 
+    The core recipes will play the role of groupping all packages and needs in this project for the image to deploy.
+      - Package groups:
+        This recipe file will call the packages needs in the runtime such as the driver and the DT overlay and the driver application.
+      - Image recipe :
+        The image recipe will call the other recipes in one image file that will be deployed on the board.
 
 
-I. Adding the meta-mylayer layer to your build
-=================================================
-
-Run 'bitbake-layers add-layer meta-mylayer'
-
-II. Misc
-========
-
---- replace with specific information about the meta-mylayer layer ---
