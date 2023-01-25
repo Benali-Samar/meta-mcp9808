@@ -1,6 +1,7 @@
 This README file contains information on the contents of the meta-mylayer layer.
 
 Please see the corresponding sections below for details.
+( to update u can add ioctl subsystem for speed data transfer, see : http://www.cs.otago.ac.nz/cosc440/labs/lab06.pdf)
 
 Dependencies
 ============
