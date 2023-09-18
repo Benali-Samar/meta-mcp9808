@@ -56,7 +56,7 @@ Table of Contents
      
      This recipe file will call the packages needs in the runtime such as the driver and the DT overlay and the driver application.
      
-      - Image recipe :
+  - Image recipe :
      
      The image recipe will call the other recipes in one image file that will be deployed on the board.
 
