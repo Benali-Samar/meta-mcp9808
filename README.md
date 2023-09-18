@@ -1,16 +1,107 @@
-# meta-mcp9808
-A yocto layer for the driver of the I2C sensor "MCP9808" 
-
-You can find the table of contents in the "README" file up here.
+# meta-mcp9808 layer
+A yocto layer for the driver of the I2C temperature sensor "MCP9808" 
 
 This yocto layer has a linux character driver for the temperature sensor "MCP9808" 
-with its userspace application and it is deployed on the raspberry Pi 3B+ board.
+with its userspace applications and it is deployed on the raspberry Pi 3B+ board.
 
-Add this meta-layer to your yocto image, by cloning this and adding the path of this meta to the "bblayers.conf" file you will be able to use it as its yours, focus on adapting it to your needs.
 
-# Steps for loading the driver while the yocto image is runing on the target:
-1.  Use " $ insmod /lib/modules/(kernel version)/extra/mcp9808.ko" to load the module into the kernel.
-2.  Type " $ echo mcp9808 0x18 > /sys/bus/i2c/devices/i2c-1/new_device" for instantiating the driver module from userspace.
-3.  Run " $ mcpuser".
+
+
+Dependencies
+============
+
+  URI: <Meta-raspberry: https://github.com/agherzan/meta-raspberrypi>
+  
+
+Table of Contents
+=================
+
+  I. Yocto layer "meta-mcp9808" containing four recipes. 
+  
+    1. Recipes kernel
+    2. Recipes user
+    3. Recipes BSP
+    4. Recipes core
+    
+    
+ II. Recipes kernel:
  
-And that's it the sensor sending its data via the driver!
+  The main recipe of the driver it has the character driver source code in C language with its Makefile that contain compilation scenarios.
+  
+  The driver should contain all the entry/remove kernel routines, and as its a char driver it should also contain the open/close file routines
+  with all character drivers specifications like major and minor number allocation and creation of sysfs access ...
+  The driver also should be integrated in the device tree source so it has some instructions for device tree compatible and ID.
+  
+  III. Recipes user:
+  
+  The driver will just send data to its file under "/dev", the user reciepe contain a simple C++ application source code that will open this file  of the driver and display it on the terminal screen, also this reciepe contain the CMakelists that will compile this application.
+    
+  IV. Recipes BSP: 
+  
+   The BSP recipe contain the Device tree overlay and the raspberry "bootconfig" append file.
+   
+   - Device Tree Overlay:
+
+     This is like a way to add a node of a device to the Device tree source "DTS" that will be applied to the original DTS in the boot time, so our I2C sensor node will be integrated under the I2C bus node.
+   
+   - RPI append Bootfiles config :
+     
+     This append file will enable the Device tree overlay to the config file of the raspberry pi.
+        
+   VII. Recipes core: 
+   
+   The core recipes will play the role of groupping all packages and needs in this project for the image to deploy.
+   
+   - Package groups:
+     
+     This recipe file will call the packages needs in the runtime such as the driver and the DT overlay and the driver application.
+     
+      - Image recipe :
+     
+     The image recipe will call the other recipes in one image file that will be deployed on the board.
+
+Layer tree:
+============     
+
+     .
+     ├── conf
+     │   └── layer.conf
+     ├── COPYING.MIT
+     ├── README
+     ├── recipes-bsp
+     │   ├── bootfiles
+     │   │   └── rpi-config_%.bbappend
+     │   └──mcp
+     │       ├── files
+     │       │   └── mcp.dts
+     │       └── mcp-overlay.bb
+     ├── recipes-core
+     │   ├── images
+     │   │   ├── mcp-image-basic_0.1.bb
+     │   │   └── mcp-image-basic_0.2.bb
+     │   └── packagegroups
+     │       └── packagegroup-mcp.bb
+     ├── recipes-example
+     │   └── example
+     │       └── example_0.1.bb
+     ├── recipes-kernel
+     │   └── MCP9808_driver
+     │       └── mcp-driver_0.1.bb
+     └── recipes-user
+        └── mcpuser
+            ├── mcpapp_0.1.bb
+            ├── mcpapp_0.2.bb
+            ├── mcpapp_0.3.bb
+            └── mcpapp.inc
+   
+
+
+
+TO-DO:
+============
+
+    [ ] Wayland distro
+    [ ] Integrate the QT app
+    [ ] Make a skeleton for integration
+    [ ] Add some demo pics
+
