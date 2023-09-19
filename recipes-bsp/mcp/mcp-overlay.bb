@@ -10,5 +10,5 @@ do_deploy(){
     install -m 0644 ${B}/mcp.dtbo ${DEPLOYDIR}
 }
 
-COMPATIBLE_MACHINE = "raspberrypi3"
+COMPATIBLE_MACHINE = "raspberrypi"
 FILES_${PN} = "/boot/devicetree/mcp.dtbo"
