@@ -10,7 +10,7 @@ with its userspace applications and it is deployed on the raspberry Pi 3B+ board
 Dependencies
 ============
 
-  URI: <Meta-raspberry: https://github.com/agherzan/meta-raspberrypi>
+  URI: <Meta-raspberry> : "https://github.com/agherzan/meta-raspberrypi"
 
 
 Table of Contents
