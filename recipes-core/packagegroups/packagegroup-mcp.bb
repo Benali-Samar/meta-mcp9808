@@ -1,9 +1,9 @@
-DESCRIPTION = " mcp9808 packagegroup"
-SUMMARY = " MCP9808 packagegroup"
 
+SUMMARY = " MCP9808 packagegroup recipe "
+DESCRIPTION = "${SUMMARY}"
 
+# Heriting the packagegroupe.bbclass 
 inherit packagegroup
 
-RDEPENDS_${PN} = " mcp-driver \ 
-		mcp-overlay kernel-modules \
-		mcpuser "
+# Run time dependencies 
+RDEPENDS_${PN} = " mcp-driver mcp-overlay kernel-modules mcpapp "
