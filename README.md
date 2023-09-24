@@ -63,36 +63,36 @@ Table of Contents
 Layer tree:
 ============     
 
-     .
-     ├── conf
-     │   └── layer.conf
-     ├── COPYING.MIT
-     ├── README
-     ├── recipes-bsp
-     │   ├── bootfiles
-     │   │   └── rpi-config_%.bbappend
-     │   └──mcp
-     │       ├── files
-     │       │   └── mcp.dts
-     │       └── mcp-overlay.bb
-     ├── recipes-core
-     │   ├── images
-     │   │   ├── mcp-image-basic_0.1.bb
-     │   │   └── mcp-image-basic_0.2.bb
-     │   └── packagegroups
-     │       └── packagegroup-mcp.bb
-     ├── recipes-example
-     │   └── example
-     │       └── example_0.1.bb
-     ├── recipes-kernel
-     │   └── MCP9808_driver
-     │       └── mcp-driver_0.1.bb
-     └── recipes-user
-        └── mcpuser
-            ├── mcpapp_0.1.bb
-            ├── mcpapp_0.2.bb
-            ├── mcpapp_0.3.bb
-            └── mcpapp.inc
+	   .
+	├── conf
+	│   └── layer.conf
+	├── COPYING.MIT
+	├── README.md
+	├── recipes-bsp
+	│   ├── bootfiles
+	│   │   └── rpi-config_%.bbappend
+	│   └── mcp
+	│       ├── files
+	│       └── mcp-overlay.bb
+	├── recipes-core
+	│   ├── images
+	│   │   ├── mcp-image-basic_0.1.bb
+	│   │   ├── mcp-image-basic_0.2.bb
+	│   │   └── mcp-image-basic_0.3.bb
+	│   └── packagegroups
+	│       └── packagegroup-mcp.bb
+	├── recipes-example
+	│   └── example
+	│       └── example_0.1.bb
+	├── recipes-kernel
+	│   └── MCP9808_driver
+	│       └── mcp-driver_0.1.bb
+	└── recipes-user
+	    └── mcpuser
+		├── mcpapp_0.1.bb
+		├── mcpapp_0.2.bb
+		├── mcpapp_0.3.bb
+		└── mcpapp.inc
 
 
 
