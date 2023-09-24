@@ -50,7 +50,7 @@ Table of Contents
 
    VII. Recipes core: 
 
-   The core recipes will play the role of groupping all packages and needs in this project for the image to deploy.
+   The core recipes will host the image recipe and the package groupe recipe:
 
    - Package groups:
 
@@ -100,7 +100,7 @@ Layer tree:
 TO-DO:
 ============
 
-    [ ] Wayland distro
+    [X] Wayland distro (distro features appended to the poky distro)
     [ ] Integrate the QT app
     [ ] Make a skeleton for integration
     [ ] Add some demo pics
